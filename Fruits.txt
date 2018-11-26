@@ -1,0 +1,8 @@
+banana yellow
+apple green
+plum purple
+orange red 7
+grape green
+pear yellow
+lemon yellow 5
+

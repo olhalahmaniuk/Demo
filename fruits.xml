@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="9.0.1" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="com.company.Fruit">
+    <void property="fruitColor">
+     <string>yellow</string>
+    </void>
+    <void property="fruitName">
+     <string>banana</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.Fruit">
+    <void property="fruitColor">
+     <string>green</string>
+    </void>
+    <void property="fruitName">
+     <string>apple</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.Fruit">
+    <void property="fruitColor">
+     <string>purple</string>
+    </void>
+    <void property="fruitName">
+     <string>plum</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.Citrus">
+    <void property="fruitColor">
+     <string>red</string>
+    </void>
+    <void property="fruitName">
+     <string>orange</string>
+    </void>
+    <void property="vitaminCContent">
+     <int>7</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.Fruit">
+    <void property="fruitColor">
+     <string>green</string>
+    </void>
+    <void property="fruitName">
+     <string>grape</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.Fruit">
+    <void property="fruitColor">
+     <string>yellow</string>
+    </void>
+    <void property="fruitName">
+     <string>pear</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.Citrus">
+    <void property="fruitColor">
+     <string>yellow</string>
+    </void>
+    <void property="fruitName">
+     <string>lemon</string>
+    </void>
+    <void property="vitaminCContent">
+     <int>5</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

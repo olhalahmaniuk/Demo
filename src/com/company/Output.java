@@ -10,22 +10,24 @@ import java.util.List;
 
 public class Output {
 
+    List<Fruit> fruitsList = new ArrayList<Fruit>();
 
     public static List<Fruit> theSameColor(String color, List<Fruit> fruitsList) {
         Iterator<Fruit> iterator = fruitsList.iterator();
-        List<Fruit> yellowfruits = new ArrayList<>();
+        List<Fruit> yellowFruits = new ArrayList<>();
         while (iterator.hasNext()) {
             Fruit fruit = iterator.next();
             if (fruit.getFruitColor().equals(color)) {
-                yellowfruits.add(fruit);
+                yellowFruits.add(fruit);
             }
         }
-        return yellowfruits;
+        return yellowFruits;
     }
-    public static List<Fruit> sortByName(List<Fruit> fruits) {
 
-        Collections.sort(fruits, new SortByName());
-        return fruits;
+    public static List<Fruit> sortByName(List<Fruit> fruitsList) {
+
+        Collections.sort(fruitsList, new SortByName());
+        return fruitsList;
     }
 
     public static void saveFruitInFile(List<Fruit> fruits) throws IOException {
@@ -36,27 +38,45 @@ public class Output {
         fos.close();
     }
 
+    public static List<Fruit> readFruitFromFile() throws IOException {
+        FileInputStream fis = new FileInputStream("fruits.xml");
+        XMLDecoder decoder = new XMLDecoder(fis);
+        List<Fruit> decodedFruits = (List<Fruit>) decoder.readObject();
+        decoder.close();
+        fis.close();
+        return decodedFruits;
+    }
 
-
-
-    public static Fruit parseToFruit(String line) {
-        Fruit fruit = new Fruit();
-        String company = "";
-
-        String newLine = line.replaceAll(company, " ");
-        newLine = newLine.replaceAll("\"", " ");
-        newLine = newLine.replaceAll(" +", " ");
-
-        List<String> values = new ArrayList<String>();
-
-        for (String value : newLine.split(" ")) {
-            value.trim();
-            values.add(value);
+    public void saveListFruitsInFile(List<Fruit> fruits) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("saveFruits.txt"));
+        for (Fruit f : fruits) {
+            f.saveObjectInFile(bufferedWriter);
         }
+        bufferedWriter.close();
+    }
 
-        fruit.setFruitName(values.get(0));
-        fruit.setFruitColor(values.get(1));
-        return fruit;
+    public List<Fruit> getFruitFromFile() throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("Fruits.txt"))) {
+            // Read file line by line
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                // Parse line to extract individual fields
+                String[] data = line.split(" ");
+                if (data.length == 3) {
+                    Citrus citrus = new Citrus();
+                    citrus.setFruitName(data[0]);
+                    citrus.setFruitColor(data[1]);
+                    citrus.setVitaminCContent(Integer.parseInt(data[2]));
+                    fruitsList.add(citrus);
+                } else if (data.length == 2) {
+                    Fruit fruit = new Fruit();
+                    fruit.setFruitName(data[0]);
+                    fruit.setFruitColor(data[1]);
+                    fruitsList.add(fruit);
+                }
+            }
+        }
+        return fruitsList;
     }
 }
 
